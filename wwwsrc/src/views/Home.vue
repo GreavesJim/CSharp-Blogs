@@ -1,8 +1,7 @@
 <template>
   <div class="home">
     <h1>Welcome Home</h1>
-
-    {{ blogs }}
+    {{ teams }}
   </div>
 </template>
 
@@ -10,11 +9,11 @@
 export default {
   name: "home",
   mounted() {
-    this.$store.dispatch("getAllBlogs");
+    this.$store.dispatch("getAllTeams");
   },
   computed: {
-    blogs() {
-      return this.$store.state.blogs;
+    teams() {
+      return this.$store.state.teams;
     }
   },
   methods: {}
