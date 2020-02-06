@@ -35,14 +35,23 @@ namespace CSharp_Blogs.Repositories
       return newData;
     }
 
-    internal void Delete(int id)
+
+    internal void Edit(Player update)
     {
-      throw new NotImplementedException();
+      string sql = @"
+      UPDATE players
+      SET
+      name = @Name,
+      teamId = @TeamId,
+      number = @Number
+      WHERE id = @Id";
+      _db.Execute(sql, update);
     }
 
-    internal Player Edit(Player update)
+    internal void Delete(int id)
     {
-      throw new NotImplementedException();
+      string sql = "DELETE FROM players WHERE id = @id";
+      _db.Execute(sql, new { id });
     }
   }
 }

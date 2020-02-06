@@ -4,30 +4,30 @@ using CSharp_Blogs.Repositories;
 
 namespace CSharp_Blogs.Services
 {
-  public class PlayersService
+  public class TeamsService
   {
-    private readonly PlayersRepository _repo;
+    private readonly TeamsRepository _repo;
 
-    public PlayersService(PlayersRepository pr)
+    public TeamsService(TeamsRepository pr)
     {
       _repo = pr;
     }
-    internal Player GetById(int id)
+    internal Team GetById(int id)
     {
       var found = _repo.GetById(id);
       if (found == null) { throw new Exception("Invalid id"); }
       return found;
     }
 
-    internal Player Create(Player newData)
+    internal Team Create(Team newData)
     {
       _repo.Create(newData);
       return newData;
     }
 
-    internal Player Edit(Player update)
+    internal Team Edit(Team update)
     {
-      Player exists = _repo.GetById(update.Id);
+      Team exists = _repo.GetById(update.Id);
       if (exists == null)
       {
         throw new Exception("Invalid Id");
