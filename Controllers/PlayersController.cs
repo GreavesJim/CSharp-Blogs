@@ -59,7 +59,7 @@ namespace CSharp_Blogs.Controllers
       {
         update.Id = id;
         update.CreatorId = HttpContext.User.FindFirst(ClaimTypes.NameIdentifier).Value;
-        return Ok(_ps.Create(update));
+        return Ok(_ps.Edit(update));
       }
       catch (Exception e)
       {

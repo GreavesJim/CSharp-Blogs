@@ -21,12 +21,37 @@ namespace CSharp_Blogs.Services
 
     internal Player Create(Player newData)
     {
-      throw new NotImplementedException();
+      _repo.Create(newData);
+      return newData;
+    }
+
+    internal Player Edit(Player update)
+    {
+      Player exists = _repo.GetById(update.Id);
+      if (exists == null)
+      {
+        throw new Exception("Invalid Id");
+      }
+      if (exists.CreatorId != update.CreatorId)
+      {
+        throw new Exception("I can't let you do that");
+      }
+      return _repo.Edit(update);
     }
 
     internal object Delete(string creatorId, int id)
     {
-      throw new NotImplementedException();
+      var exists = _repo.GetById(id);
+      if (exists == null)
+      {
+        throw new Exception("Invalid Id");
+      }
+      if (exists.CreatorId != creatorId)
+      {
+        throw new Exception("I can't let you do that");
+      }
+      _repo.Delete(id);
+      return "Successfully deleted";
     }
   }
 }
