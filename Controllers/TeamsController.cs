@@ -1,4 +1,5 @@
 using System;
+using System.Collections.Generic;
 using System.Security.Claims;
 using CSharp_Blogs.Models;
 using CSharp_Blogs.Services;
@@ -17,7 +18,22 @@ namespace CSharp_Blogs.Controllers
     {
       _ps = ps;
     }
+    [HttpGet]
 
+    public ActionResult<IEnumerable<Team>> Get()
+
+    {
+      try
+
+      {
+        return Ok(_ps.Get());
+      }
+      catch (System.Exception e)
+      {
+
+        return BadRequest(e.Message);
+      }
+    }
     [HttpGet("{id}")]
     public ActionResult<Team> GetById(int id)
     {

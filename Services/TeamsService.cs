@@ -1,4 +1,5 @@
 using System;
+using System.Collections.Generic;
 using CSharp_Blogs.Models;
 using CSharp_Blogs.Repositories;
 
@@ -12,6 +13,12 @@ namespace CSharp_Blogs.Services
     {
       _repo = pr;
     }
+    internal IEnumerable<Team> Get()
+    {
+      return _repo.Get();
+
+    }
+
     internal Team GetById(int id)
     {
       var found = _repo.GetById(id);
@@ -39,6 +46,7 @@ namespace CSharp_Blogs.Services
       _repo.Edit(update);
       return update;
     }
+
 
     internal object Delete(string creatorId, int id)
     {

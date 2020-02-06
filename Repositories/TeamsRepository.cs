@@ -1,4 +1,5 @@
 using System;
+using System.Collections.Generic;
 using System.Data;
 using CSharp_Blogs.Models;
 using Dapper;
@@ -21,6 +22,12 @@ namespace CSharp_Blogs.Repositories
       string sql = "SELECT * FROM teams WHERE id = @id";
 
       return _db.QueryFirstOrDefault<Team>(sql, new { id });
+    }
+
+    internal IEnumerable<Team> Get()
+    {
+      string sql = "SELECT * FROM teams;";
+      return _db.Query<Team>(sql);
     }
 
     internal Team Create(Team newData)
