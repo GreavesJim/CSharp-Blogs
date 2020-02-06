@@ -31,6 +31,8 @@ namespace CSharp_Blogs.Controllers
         return BadRequest(e.Message);
       }
 
+      //make another get for another thing
+
     }
     [HttpPost]
     [Authorize]
