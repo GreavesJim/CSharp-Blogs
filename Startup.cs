@@ -3,6 +3,8 @@ using System.Collections.Generic;
 using System.Data;
 using System.Linq;
 using System.Threading.Tasks;
+using CSharp_Blogs.Repositories;
+using CSharp_Blogs.Services;
 using Microsoft.AspNetCore.Authentication.JwtBearer;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
@@ -57,6 +59,10 @@ namespace csharp_blogs
             services.AddScoped<IDbConnection>(x => CreateDbConnection());
 
             //TODO Add Transients
+            services.AddTransient<BlogsService>();
+            services.AddTransient<BlogsRepository>();
+
+
         }
 
         private IDbConnection CreateDbConnection()
@@ -72,7 +78,7 @@ namespace csharp_blogs
                 app.UseCors("CorsDevPolicy");
             }
 
-            app.UseHttpsRedirection();
+            //app.UseHttpsRedirection();
 
             app.UseRouting();
             app.UseAuthentication();

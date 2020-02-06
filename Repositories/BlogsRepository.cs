@@ -17,8 +17,7 @@ namespace CSharp_Blogs.Repositories
         internal IEnumerable<Blog> Get()
         {
             string sql = "SELECT * FROM blogs;";
-            _db.Query<Blog>(sql);
-
+            return _db.Query<Blog>(sql);
         }
 
         internal Blog GetById(int id)

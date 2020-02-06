@@ -6,7 +6,7 @@
 </template>
 
 <script>
-import Navbar from "@/components/Navbar";
+import Navbar from "@/components/navbar";
 import { onAuth } from "@bcwdev/auth0-vue";
 export default {
   name: "App",
@@ -20,5 +20,4 @@ export default {
 };
 </script>
 
-<style>
-</style>
+<style></style>
