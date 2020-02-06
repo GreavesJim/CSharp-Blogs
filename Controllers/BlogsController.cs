@@ -3,6 +3,8 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Security.Claims;
 using System.Threading.Tasks;
+using CSharp_Blogs.Models;
+using CSharp_Blogs.Services;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.Extensions.Logging;
@@ -38,7 +40,7 @@ namespace csharp_blogs.Controllers
             try
             {
                 var userId = HttpContext.User.FindFirst(ClaimTypes.NameIdentifier).Value;
-                newBlog.UserId = userId;
+                newBlog.CreatorId = userId;
                 return Ok(_ks.Create(newBlog));
             }
             catch (Exception e)
