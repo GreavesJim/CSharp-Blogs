@@ -1,6 +1,7 @@
 using System;
 using System.Data;
 using CSharp_Blogs.Models;
+using Dapper;
 
 namespace CSharp_Blogs.Repositories
 {
@@ -17,12 +18,21 @@ namespace CSharp_Blogs.Repositories
 
     internal Player GetById(int id)
     {
-      throw new NotImplementedException();
+      string sql = "SELECT * FROM players WHERE id = @id";
+
+      return _db.QueryFirstOrDefault<Player>(sql, new { id });
     }
 
-    internal void Create(Player newData)
+    internal Player Create(Player newData)
     {
-      throw new NotImplementedException();
+      string sql = @"
+      INSERT INTO players (name, teamId, number, creatorId)
+      VALUES (@Name, @TeamId, @Number, @CreatorId);
+      SELECT LAST_INSERT_ID();";
+      int id = _db.ExecuteScalar<int>(sql, newData);
+
+      newData.Id = id;
+      return newData;
     }
 
     internal void Delete(int id)
