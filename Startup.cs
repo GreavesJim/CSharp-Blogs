@@ -43,14 +43,14 @@ namespace csharp_blogs
       {
         options.AddPolicy("CorsDevPolicy", builder =>
               {
-            builder
-                      .WithOrigins(new string[]{
+                builder
+                          .WithOrigins(new string[]{
                             "http://localhost:8080"
-                  })
-                      .AllowAnyMethod()
-                      .AllowAnyHeader()
-                      .AllowCredentials();
-          });
+                      })
+                          .AllowAnyMethod()
+                          .AllowAnyHeader()
+                          .AllowCredentials();
+              });
       });
 
       services.AddControllers();
@@ -61,7 +61,8 @@ namespace csharp_blogs
       //TODO Add Transients
       services.AddTransient<PlayersService>();
       services.AddTransient<PlayersRepository>();
-
+      services.AddTransient<TeamsService>();
+      services.AddTransient<TeamsRepository>();
 
     }
 
