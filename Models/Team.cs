@@ -4,6 +4,7 @@ namespace CSharp_Blogs.Models
   {
     string Name { get; set; }
     int Id { get; set; }
+    public string CreatorId { get; set; }
 
 
   }
