@@ -13,6 +13,7 @@ CREATE TABLE players (
     creatorId VARCHAR(255) NOT NULL,
     name VARCHAR(255) NOT NULL,
     number int NOT NULL,
+    position VARCHAR(255) NOT NULL,
     PRIMARY KEY (id)
 );
 
